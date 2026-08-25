@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineReserva - Reserva tus entradas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <h1 class="navbar-logo">🎬 CineReserva</h1>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h2>Reserva tu experiencia cinematográfica</h2>
+            <p>Elige la película, el horario y el número de entradas que deseas</p>
+        </section>
+
+        <!-- Movies Section -->
+        <section class="movies-section">
+            <h3>Películas Disponibles</h3>
+            <div class="movies-grid" id="moviesGrid">
+                <!-- Las películas se cargarán aquí con JavaScript -->
+            </div>
+        </section>
+
+        <!-- Movie Details Section (hidden initially) -->
+        <section class="movie-details-section" id="movieDetailsSection" style="display: none;">
+            <div class="movie-details-container">
+                <!-- Movie info -->
+                <div class="selected-movie-info">
+                    <h3 id="selectedMovieTitle"></h3>
+                    <p id="selectedMovieDescription"></p>
+                </div>
+
+                <!-- Showtimes -->
+                <div class="showtimes-section">
+                    <label for="showtimesContainer">Selecciona un horario:</label>
+                    <div class="showtimes-container" id="showtimesContainer">
+                        <!-- Los horarios se cargarán aquí con JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Ticket Quantity -->
+                <div class="quantity-section">
+                    <label for="quantityInput">Cantidad de entradas:</label>
+                    <div class="quantity-selector">
+                        <button class="btn-quantity" id="decreaseBtn" aria-label="Disminuir cantidad">−</button>
+                        <input type="number" id="quantityInput" min="1" value="1" readonly aria-label="Cantidad de entradas">
+                        <button class="btn-quantity" id="increaseBtn" aria-label="Aumentar cantidad">+</button>
+                    </div>
+                </div>
+
+                <!-- Confirm Button -->
+                <button class="btn-confirm" id="confirmBtn">Confirmar Reserva</button>
+                <button class="btn-back" id="backBtn">Volver a películas</button>
+            </div>
+        </section>
+
+        <!-- Confirmation Message Section (hidden initially) -->
+        <section class="confirmation-section" id="confirmationSection" style="display: none;">
+            <div class="confirmation-container">
+                <div class="success-icon">✓</div>
+                <h3>¡Reserva Confirmada!</h3>
+                <div class="reservation-summary">
+                    <p><strong>Película:</strong> <span id="summaryMovie"></span></p>
+                    <p><strong>Horario:</strong> <span id="summaryShowtime"></span></p>
+                    <p><strong>Entradas:</strong> <span id="summaryQuantity"></span></p>
+                </div>
+                <p class="confirmation-message">Tu reserva ha sido procesada con éxito. ¡Disfruta la película!</p>
+                <button class="btn-new-reservation" id="newReservationBtn">Nueva Reserva</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 CineReserva. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
