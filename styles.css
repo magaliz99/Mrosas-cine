@@ -250,24 +250,25 @@ main {
     color: var(--text-secondary);
     margin-bottom: var(--spacing-md);
 }
-
 .btn-select-movie {
-    background: linear-gradient(135deg, var(--accent-purple), #8566b3);
+    background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
     color: var(--text-light);
     border: none;
-    padding: var(--spacing-sm) var(--spacing-md);
-    border-radius: var(--border-radius);
+    padding: 13px 20px;
+    border-radius: 8px;
     cursor: pointer;
-    font-size: var(--font-size-sm);
+    font-size: 14px;
     font-weight: 700;
-    transition: var(--transition);
+    transition: all 0.3s ease;
     text-transform: uppercase;
-    letter-spacing: 0.8px;
+    letter-spacing: 1px;
+    width: 100%;
+    min-height: 44px;
 }
 
 .btn-select-movie:hover {
-    transform: scale(1.02);
-    box-shadow: 0 4px 12px rgba(112, 85, 165, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(112, 85, 165, 0.3);
 }
 
 .btn-select-movie:active {
