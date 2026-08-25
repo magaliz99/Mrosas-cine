@@ -9,6 +9,7 @@ const movies = [
         genre: "Comedia, Animación",
         description: "Tres malvados granjeros le declaran la guerra a un zorro y este anima a sus vecinos animales a defenderse.",
         showtimes: ["14:30", "17:00", "19:30", "22:00"]
+        image: "images/mrfox.jpeg"
     },
     {
         id: 2,
@@ -16,6 +17,7 @@ const movies = [
         genre: "Musical, Animación",
         description: "Raoul y Emile accidentalmente liberan a un monstruo del excéntrico invernadero de un científico e intentan atraparlo.",
         showtimes: ["15:00", "18:00", "20:30"]
+        image: "paris.jpeg"
     },
     {
         id: 3,
@@ -23,6 +25,7 @@ const movies = [
         genre: "Fantasia, Aventura",
         description: "Satsuki y Mei se mudan al campo con su padre mientras su madre se recupera en un hospital cercano. Explorando su nuevo hogar,descubren un mundo invisible para los adultos,habitado por espíritus del bosque",
         showtimes: ["16:00", "18:30", "21:00", "23:30"]
+        image: "images/paris.jpeg"
     },
     {
         id: 4,
@@ -30,6 +33,7 @@ const movies = [
         genre: "Comedia, Drama",
         description: "Un maestro en un colegio privado emplea métodos poco convencionales para inspirar las vidas de sus estudiantes.",
         showtimes: ["13:30", "15:30", "17:30", "20:00"]
+        image: "images/sociedadpoetas.jpeg"
     },
     {
         id: 5,
@@ -37,6 +41,7 @@ const movies = [
         genre: "Romance, Comedia",
         description: "Elizabeth Bennet conoce al apuesto y adinerado Sr. Darcy, con quien, rápidamente, inicia una intensa y compleja dinámica.",
         showtimes: ["15:45", "18:15", "20:45", "23:00"]
+        image: "images/prejuicio.jpeg"
     },
     {
         id: 6,
@@ -44,6 +49,7 @@ const movies = [
         genre: "Ciencia Ficción, Aventura",
         description: "Gracias a un descubrimiento, un grupo de científicos y exploradores, se embarcan en un viaje espacial para encontrar un lugar con las condiciones necesarias para reemplazar a la Tierra y comenzar una nueva vida allí.",
         showtimes: ["14:00", "16:30", "19:00", "21:30"]
+        image: "images/interestelar.jpeg"
     }
 ];
 
@@ -91,22 +97,23 @@ function createMovieCard(movie) {
     const showtimesText = showtimesCount === 1 ? 'horario' : 'horarios';
 
     card.innerHTML = `
+    <img class="movie-card-image" src="${movie.image}" alt="Póster de ${movie.title}">
+    
+    <div class="movie-card-content">
         <div class="movie-card-header">
             <h3 class="movie-card-title">${movie.title}</h3>
             <span class="movie-card-genre">${movie.genre}</span>
         </div>
+
         <p class="movie-card-description">${movie.description}</p>
+
         <p class="movie-card-showtimes">${showtimesCount} ${showtimesText} disponibles</p>
+
         <button class="btn-select-movie" data-movie-id="${movie.id}">
             Seleccionar
         </button>
-    `;
-
-    card.querySelector('.btn-select-movie').addEventListener('click', () => {
-        selectMovie(movie);
-    });
-
-    return card;
+    </div>
+`;
 }
 
 // ============================================
