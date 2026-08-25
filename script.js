@@ -5,44 +5,44 @@
 const movies = [
     {
         id: 1,
-        title: "El Viaje Infinito",
-        genre: "Ciencia Ficción",
-        description: "Una aventura épica a través de dimensiones paralelas y mundos desconocidos.",
+        title: "Fantantic Mr. Fox",
+        genre: "Comedia, Animación",
+        description: "Tres malvados granjeros le declaran la guerra a un zorro y este anima a sus vecinos animales a defenderse.",
         showtimes: ["14:30", "17:00", "19:30", "22:00"]
     },
     {
         id: 2,
-        title: "Corazones en Silencio",
-        genre: "Drama",
-        description: "Una historia de amor que desafía los límites del tiempo y la distancia.",
+        title: "Un monstruo en Paris",
+        genre: "Musical, Animación",
+        description: "Raoul y Emile accidentalmente liberan a un monstruo del excéntrico invernadero de un científico e intentan atraparlo.",
         showtimes: ["15:00", "18:00", "20:30"]
     },
     {
         id: 3,
-        title: "La Sombra del Misterio",
-        genre: "Suspenso",
-        description: "Un thriller psicológico que te mantendrá al borde del asiento hasta el final.",
+        title: "Mi vecino Totoro",
+        genre: "Fantasia, Aventura",
+        description: "Satsuki y Mei se mudan al campo con su padre mientras su madre se recupera en un hospital cercano. Explorando su nuevo hogar,descubren un mundo invisible para los adultos,habitado por espíritus del bosque",
         showtimes: ["16:00", "18:30", "21:00", "23:30"]
     },
     {
         id: 4,
-        title: "Risa Garantizada",
-        genre: "Comedia",
-        description: "La película más divertida del año. Prepárate para reír sin parar.",
+        title: "La sociedad de los poetas muertos",
+        genre: "Comedia, Drama",
+        description: "Un maestro en un colegio privado emplea métodos poco convencionales para inspirar las vidas de sus estudiantes.",
         showtimes: ["13:30", "15:30", "17:30", "20:00"]
     },
     {
         id: 5,
-        title: "Héroes del Pasado",
-        genre: "Acción",
-        description: "Explosiones, persecuciones y adrenalina pura en una aventura inolvidable.",
+        title: "Orgullo y Prejuicio",
+        genre: "Romance, Comedia",
+        description: "Elizabeth Bennet conoce al apuesto y adinerado Sr. Darcy, con quien, rápidamente, inicia una intensa y compleja dinámica.",
         showtimes: ["15:45", "18:15", "20:45", "23:00"]
     },
     {
         id: 6,
-        title: "Fantasía Encantada",
-        genre: "Fantasía",
-        description: "Un mundo mágico lleno de criaturas fantásticas y secretos por descubrir.",
+        title: "Interestelar",
+        genre: "Ciencia Ficción, Aventura",
+        description: "Gracias a un descubrimiento, un grupo de científicos y exploradores, se embarcan en un viaje espacial para encontrar un lugar con las condiciones necesarias para reemplazar a la Tierra y comenzar una nueva vida allí.",
         showtimes: ["14:00", "16:30", "19:00", "21:30"]
     }
 ];
