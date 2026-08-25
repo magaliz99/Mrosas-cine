@@ -3,14 +3,16 @@
    ============================================ */
 
 :root {
-    /* Paleta de colores - Tema oscuro elegante */
-    --primary-dark: #0a1428;        /* Azul petróleo muy oscuro */
-    --secondary-dark: #1a2332;      /* Azul oscuro - superficies */
-    --accent-purple: #7c5ba6;       /* Violeta apagado */
-    --text-light: #e8e8f0;          /* Texto blanco suave */
-    --text-secondary: #8b92a9;      /* Texto gris azulado */
-    --border-color: #2d3748;        /* Bordes sutiles */
-    --success-color: #6ba587;       /* Verde tranquilo para éxito */
+    /* Paleta de colores - Tema cine elegante oscuro */
+    --primary-black: #050507;           /* Negro casi absoluto */
+    --secondary-black: #0b0f18;         /* Negro azulado */
+    --tertiary-dark: #101c2b;           /* Azul petróleo oscuro */
+    --accent-purple: #7055a5;           /* Violeta apagado/elegante */
+    --accent-blue: #4d78a8;             /* Azul como acento sutil */
+    --text-light: #f1f1f5;              /* Blanco suave */
+    --text-secondary: #9298a8;          /* Gris azulado */
+    --border-color: #1a2333;            /* Bordes sutiles */
+    --success-color: #6ba587;           /* Verde tranquilo */
     
     /* Tipografía */
     --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -19,6 +21,7 @@
     --font-size-lg: 18px;
     --font-size-xl: 24px;
     --font-size-2xl: 32px;
+    --font-size-3xl: 48px;
     
     /* Espaciado */
     --spacing-xs: 4px;
@@ -30,8 +33,9 @@
     
     /* Bordes y sombras */
     --border-radius: 8px;
-    --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    --box-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+    --border-radius-lg: 12px;
+    --box-shadow-deep: 0 8px 24px rgba(0, 0, 0, 0.6);
+    --box-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
     
     /* Transiciones */
     --transition: all 0.3s ease;
@@ -53,7 +57,7 @@ html {
 
 body {
     font-family: var(--font-main);
-    background-color: var(--primary-dark);
+    background-color: var(--primary-black);
     color: var(--text-light);
     line-height: 1.6;
     min-height: 100vh;
@@ -70,9 +74,9 @@ main {
    ============================================ */
 
 .navbar {
-    background-color: var(--secondary-dark);
-    border-bottom: 2px solid var(--accent-purple);
-    padding: var(--spacing-md) 0;
+    background-color: var(--secondary-black);
+    border-bottom: 1px solid var(--border-color);
+    padding: var(--spacing-lg) 0;
     position: sticky;
     top: 0;
     z-index: 100;
@@ -86,10 +90,18 @@ main {
 }
 
 .navbar-logo {
-    font-size: var(--font-size-xl);
-    font-weight: 700;
+    font-size: var(--font-size-2xl);
+    font-weight: 800;
     color: var(--text-light);
-    letter-spacing: 0.5px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.navbar-logo::before {
+    content: "🎬";
+    margin-right: var(--spacing-sm);
+    font-size: var(--font-size-xl);
+    opacity: 0.6;
 }
 
 /* ============================================
@@ -99,7 +111,7 @@ main {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: var(--spacing-xl) var(--spacing-md);
+    padding: var(--spacing-2xl) var(--spacing-md);
     width: 100%;
 }
 
@@ -110,22 +122,44 @@ main {
 .hero {
     text-align: center;
     margin-bottom: var(--spacing-2xl);
-    padding: var(--spacing-xl) var(--spacing-md);
-    background: linear-gradient(135deg, rgba(124, 91, 166, 0.1), rgba(26, 35, 50, 0.5));
-    border-radius: var(--border-radius);
-    border: 1px solid var(--border-color);
+    padding: var(--spacing-2xl) var(--spacing-lg);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.08;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
 }
 
 .hero h2 {
-    font-size: var(--font-size-2xl);
-    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-3xl);
+    margin-bottom: var(--spacing-lg);
     color: var(--text-light);
     font-weight: 700;
+    letter-spacing: 1px;
+    position: relative;
+    z-index: 1;
 }
 
 .hero p {
     font-size: var(--font-size-lg);
     color: var(--text-secondary);
+    position: relative;
+    z-index: 1;
+    max-width: 600px;
+    margin: 0 auto;
+    letter-spacing: 0.5px;
 }
 
 /* ============================================
@@ -136,30 +170,51 @@ main {
     font-size: var(--font-size-xl);
     margin-bottom: var(--spacing-lg);
     color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 600;
 }
 
 .movies-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     gap: var(--spacing-lg);
     margin-bottom: var(--spacing-xl);
 }
 
 .movie-card {
-    background-color: var(--secondary-dark);
+    background-color: var(--secondary-black);
     border: 1px solid var(--border-color);
-    border-radius: var(--border-radius);
-    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
     cursor: pointer;
     transition: var(--transition);
     display: flex;
     flex-direction: column;
+    height: 100%;
 }
 
 .movie-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--box-shadow);
+    transform: translateY(-6px);
+    box-shadow: var(--box-shadow-deep);
     border-color: var(--accent-purple);
+}
+
+/* Espacio para poster/imagen */
+.movie-card::before {
+    content: '';
+    display: block;
+    width: 100%;
+    padding-bottom: 150%;
+    background: linear-gradient(135deg, var(--tertiary-dark), var(--secondary-black));
+    position: relative;
+}
+
+.movie-card-content {
+    padding: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
 .movie-card-header {
@@ -171,13 +226,15 @@ main {
     font-weight: 700;
     color: var(--text-light);
     margin-bottom: var(--spacing-sm);
+    line-height: 1.4;
 }
 
 .movie-card-genre {
     font-size: var(--font-size-sm);
     color: var(--accent-purple);
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.8px;
+    font-weight: 600;
 }
 
 .movie-card-description {
@@ -195,22 +252,22 @@ main {
 }
 
 .btn-select-movie {
-    background-color: var(--accent-purple);
+    background: linear-gradient(135deg, var(--accent-purple), #8566b3);
     color: var(--text-light);
     border: none;
     padding: var(--spacing-sm) var(--spacing-md);
     border-radius: var(--border-radius);
     cursor: pointer;
     font-size: var(--font-size-sm);
-    font-weight: 600;
+    font-weight: 700;
     transition: var(--transition);
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.8px;
 }
 
 .btn-select-movie:hover {
-    background-color: #9370b8;
     transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(112, 85, 165, 0.3);
 }
 
 .btn-select-movie:active {
@@ -237,12 +294,13 @@ main {
 }
 
 .movie-details-container {
-    background-color: var(--secondary-dark);
+    background-color: var(--secondary-black);
     border: 1px solid var(--border-color);
-    border-radius: var(--border-radius);
+    border-radius: var(--border-radius-lg);
     padding: var(--spacing-xl);
     max-width: 600px;
     margin: 0 auto var(--spacing-xl);
+    box-shadow: var(--box-shadow-deep);
 }
 
 .selected-movie-info {
@@ -255,6 +313,7 @@ main {
     font-size: var(--font-size-xl);
     margin-bottom: var(--spacing-md);
     color: var(--text-light);
+    font-weight: 700;
 }
 
 .selected-movie-info p {
@@ -274,12 +333,12 @@ main {
 .showtimes-section label,
 .quantity-section label {
     display: block;
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: var(--spacing-md);
     color: var(--text-light);
     font-size: var(--font-size-sm);
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
 }
 
 .showtimes-container {
@@ -289,27 +348,30 @@ main {
 }
 
 .btn-showtime {
-    background-color: var(--border-color);
+    background-color: var(--secondary-black);
     color: var(--text-light);
-    border: 2px solid var(--border-color);
+    border: 1px solid var(--border-color);
     padding: var(--spacing-md);
     border-radius: var(--border-radius);
     cursor: pointer;
     font-size: var(--font-size-sm);
-    font-weight: 600;
+    font-weight: 700;
     transition: var(--transition);
     text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
 }
 
 .btn-showtime:hover {
-    border-color: var(--accent-purple);
-    background-color: rgba(124, 91, 166, 0.2);
+    border-color: var(--accent-blue);
+    background-color: rgba(77, 120, 168, 0.1);
 }
 
 .btn-showtime.active {
-    background-color: var(--accent-purple);
+    background: linear-gradient(135deg, var(--accent-purple), #8566b3);
     border-color: var(--accent-purple);
     color: var(--text-light);
+    box-shadow: 0 4px 12px rgba(112, 85, 165, 0.3);
 }
 
 /* ============================================
@@ -327,7 +389,7 @@ main {
 }
 
 .btn-quantity {
-    background-color: var(--accent-purple);
+    background: linear-gradient(135deg, var(--accent-purple), #8566b3);
     color: var(--text-light);
     border: none;
     width: 44px;
@@ -335,7 +397,7 @@ main {
     border-radius: var(--border-radius);
     cursor: pointer;
     font-size: var(--font-size-lg);
-    font-weight: 600;
+    font-weight: 700;
     transition: var(--transition);
     display: flex;
     align-items: center;
@@ -343,7 +405,8 @@ main {
 }
 
 .btn-quantity:hover {
-    background-color: #9370b8;
+    transform: scale(1.08);
+    box-shadow: 0 4px 12px rgba(112, 85, 165, 0.3);
 }
 
 .btn-quantity:active {
@@ -353,18 +416,21 @@ main {
 #quantityInput {
     width: 80px;
     padding: var(--spacing-sm);
-    background-color: var(--primary-dark);
+    background-color: var(--primary-black);
     color: var(--text-light);
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
     text-align: center;
     font-size: var(--font-size-lg);
-    font-weight: 600;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 #quantityInput:focus {
     outline: none;
     border-color: var(--accent-purple);
+    box-shadow: inset 0 0 0 2px rgba(112, 85, 165, 0.1);
 }
 
 /* ============================================
@@ -372,24 +438,23 @@ main {
    ============================================ */
 
 .btn-confirm {
-    background-color: var(--accent-purple);
+    background: linear-gradient(135deg, var(--accent-purple), #8566b3);
     color: var(--text-light);
     border: none;
     padding: var(--spacing-md) var(--spacing-lg);
     border-radius: var(--border-radius);
     cursor: pointer;
     font-size: var(--font-size-base);
-    font-weight: 700;
+    font-weight: 800;
     transition: var(--transition);
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 1.2px;
     width: 100%;
     margin-bottom: var(--spacing-md);
 }
 
 .btn-confirm:hover {
-    background-color: #9370b8;
-    box-shadow: var(--box-shadow);
+    box-shadow: var(--box-shadow-deep);
     transform: translateY(-2px);
 }
 
@@ -398,9 +463,9 @@ main {
 }
 
 .btn-confirm:disabled {
-    background-color: var(--text-secondary);
+    background: linear-gradient(135deg, var(--text-secondary), #a9afb8);
     cursor: not-allowed;
-    opacity: 0.6;
+    opacity: 0.5;
 }
 
 .btn-back {
@@ -411,15 +476,17 @@ main {
     border-radius: var(--border-radius);
     cursor: pointer;
     font-size: var(--font-size-sm);
-    font-weight: 600;
+    font-weight: 700;
     transition: var(--transition);
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.8px;
     width: 100%;
 }
 
 .btn-back:hover {
-    background-color: rgba(124, 91, 166, 0.2);
+    background-color: rgba(112, 85, 165, 0.15);
+    border-color: var(--accent-blue);
+    color: var(--accent-blue);
 }
 
 /* ============================================
@@ -431,13 +498,31 @@ main {
 }
 
 .confirmation-container {
-    background: linear-gradient(135deg, rgba(124, 91, 166, 0.15), rgba(26, 35, 50, 0.5));
-    border: 2px solid var(--accent-purple);
-    border-radius: var(--border-radius);
+    background-color: var(--secondary-black);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
     padding: var(--spacing-xl);
     max-width: 600px;
     margin: 0 auto var(--spacing-xl);
     text-align: center;
+    box-shadow: var(--box-shadow-deep);
+    position: relative;
+    overflow: hidden;
+}
+
+.confirmation-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 300px;
+    height: 300px;
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.08;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
 }
 
 .success-icon {
@@ -445,6 +530,8 @@ main {
     color: var(--success-color);
     margin-bottom: var(--spacing-md);
     animation: scaleIn 0.5s ease;
+    position: relative;
+    z-index: 1;
 }
 
 @keyframes scaleIn {
@@ -459,18 +546,25 @@ main {
 }
 
 .confirmation-container h3 {
-    font-size: var(--font-size-xl);
+    font-size: var(--font-size-2xl);
     margin-bottom: var(--spacing-lg);
     color: var(--text-light);
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
 }
 
 .reservation-summary {
-    background-color: var(--secondary-dark);
+    background-color: var(--primary-black);
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
     padding: var(--spacing-lg);
     margin-bottom: var(--spacing-lg);
     text-align: left;
+    position: relative;
+    z-index: 1;
 }
 
 .reservation-summary p {
@@ -485,32 +579,36 @@ main {
 
 .reservation-summary strong {
     color: var(--accent-purple);
+    font-weight: 700;
 }
 
 .confirmation-message {
     color: var(--text-secondary);
     margin-bottom: var(--spacing-lg);
     font-size: var(--font-size-base);
+    position: relative;
+    z-index: 1;
 }
 
 .btn-new-reservation {
-    background-color: var(--success-color);
+    background: linear-gradient(135deg, var(--accent-blue), #5a8ab8);
     color: var(--text-light);
     border: none;
     padding: var(--spacing-md) var(--spacing-lg);
     border-radius: var(--border-radius);
     cursor: pointer;
     font-size: var(--font-size-base);
-    font-weight: 700;
+    font-weight: 800;
     transition: var(--transition);
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 1.2px;
+    position: relative;
+    z-index: 1;
 }
 
 .btn-new-reservation:hover {
-    background-color: #7eb899;
     transform: translateY(-2px);
-    box-shadow: var(--box-shadow);
+    box-shadow: var(--box-shadow-deep);
 }
 
 .btn-new-reservation:active {
@@ -522,13 +620,15 @@ main {
    ============================================ */
 
 .footer {
-    background-color: var(--secondary-dark);
+    background-color: var(--secondary-black);
     border-top: 1px solid var(--border-color);
     padding: var(--spacing-lg) var(--spacing-md);
     text-align: center;
     color: var(--text-secondary);
     font-size: var(--font-size-sm);
     margin-top: auto;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 /* ============================================
@@ -540,8 +640,14 @@ main {
         padding: var(--spacing-lg) var(--spacing-md);
     }
 
+    .hero {
+        padding: var(--spacing-xl) var(--spacing-md);
+        margin-bottom: var(--spacing-xl);
+    }
+
     .hero h2 {
-        font-size: var(--font-size-xl);
+        font-size: var(--font-size-2xl);
+        margin-bottom: var(--spacing-md);
     }
 
     .hero p {
@@ -572,12 +678,14 @@ main {
         --font-size-base: 14px;
         --font-size-lg: 16px;
         --font-size-xl: 20px;
+        --font-size-2xl: 24px;
         --spacing-lg: 16px;
         --spacing-xl: 20px;
     }
 
     .navbar-logo {
         font-size: var(--font-size-lg);
+        letter-spacing: 1px;
     }
 
     .hero {
@@ -586,12 +694,12 @@ main {
     }
 
     .hero h2 {
-        font-size: var(--font-size-lg);
+        font-size: var(--font-size-xl);
         margin-bottom: var(--spacing-sm);
     }
 
     .hero p {
-        font-size: var(--font-size-base);
+        font-size: var(--font-size-sm);
     }
 
     .movies-grid {
@@ -599,7 +707,7 @@ main {
         gap: var(--spacing-md);
     }
 
-    .movie-card {
+    .movie-card-content {
         padding: var(--spacing-md);
     }
 
