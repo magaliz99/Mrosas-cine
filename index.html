@@ -3,27 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CineReserva - Reserva tus entradas</title>
+    <title>CINEplus - Reserva tu próxima función</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Navbar -->
     <nav class="navbar">
         <div class="navbar-container">
-            <h1 class="navbar-logo">🎬 CineReserva</h1>
+            <h1 class="navbar-logo">CINEplus</h1>
         </div>
     </nav>
 
     <main class="container">
         <!-- Hero Section -->
         <section class="hero">
-            <h2>Reserva tu experiencia cinematográfica</h2>
-            <p>Elige la película, el horario y el número de entradas que deseas</p>
+            <h2>TU PRÓXIMA FUNCIÓN COMIENZA AQUÍ</h2>
+            <p>Explorá la cartelera y elegí cuándo verla.</p>
         </section>
 
         <!-- Movies Section -->
         <section class="movies-section">
-            <h3>Películas Disponibles</h3>
+            <h3>Cartelera</h3>
             <div class="movies-grid" id="moviesGrid">
                 <!-- Las películas se cargarán aquí con JavaScript -->
             </div>
@@ -58,7 +58,7 @@
 
                 <!-- Confirm Button -->
                 <button class="btn-confirm" id="confirmBtn">Confirmar Reserva</button>
-                <button class="btn-back" id="backBtn">Volver a películas</button>
+                <button class="btn-back" id="backBtn">Volver a Cartelera</button>
             </div>
         </section>
 
@@ -66,13 +66,13 @@
         <section class="confirmation-section" id="confirmationSection" style="display: none;">
             <div class="confirmation-container">
                 <div class="success-icon">✓</div>
-                <h3>¡Reserva Confirmada!</h3>
+                <h3>Reserva Confirmada</h3>
                 <div class="reservation-summary">
                     <p><strong>Película:</strong> <span id="summaryMovie"></span></p>
                     <p><strong>Horario:</strong> <span id="summaryShowtime"></span></p>
                     <p><strong>Entradas:</strong> <span id="summaryQuantity"></span></p>
                 </div>
-                <p class="confirmation-message">Tu reserva ha sido procesada con éxito. ¡Disfruta la película!</p>
+                <p class="confirmation-message">Tu reserva ha sido confirmada. ¡Que disfrutes la función!</p>
                 <button class="btn-new-reservation" id="newReservationBtn">Nueva Reserva</button>
             </div>
         </section>
@@ -80,7 +80,7 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <p>&copy; 2024 CineReserva. Todos los derechos reservados.</p>
+        <p>&copy; 2024 CINEplus. Todos los derechos reservados.</p>
     </footer>
 
     <script src="script.js"></script>
