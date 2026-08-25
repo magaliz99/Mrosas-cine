@@ -1,0 +1,660 @@
+/* ============================================
+   VARIABLES Y CONFIGURACIÓN GLOBAL
+   ============================================ */
+
+:root {
+    /* Paleta de colores - Tema oscuro elegante */
+    --primary-dark: #0a1428;        /* Azul petróleo muy oscuro */
+    --secondary-dark: #1a2332;      /* Azul oscuro - superficies */
+    --accent-purple: #7c5ba6;       /* Violeta apagado */
+    --text-light: #e8e8f0;          /* Texto blanco suave */
+    --text-secondary: #8b92a9;      /* Texto gris azulado */
+    --border-color: #2d3748;        /* Bordes sutiles */
+    --success-color: #6ba587;       /* Verde tranquilo para éxito */
+    
+    /* Tipografía */
+    --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-size-base: 16px;
+    --font-size-sm: 14px;
+    --font-size-lg: 18px;
+    --font-size-xl: 24px;
+    --font-size-2xl: 32px;
+    
+    /* Espaciado */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    --spacing-2xl: 48px;
+    
+    /* Bordes y sombras */
+    --border-radius: 8px;
+    --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --box-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+    
+    /* Transiciones */
+    --transition: all 0.3s ease;
+}
+
+/* ============================================
+   RESET Y ESTILOS BASE
+   ============================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--primary-dark);
+    color: var(--text-light);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+/* ============================================
+   NAVBAR
+   ============================================ */
+
+.navbar {
+    background-color: var(--secondary-dark);
+    border-bottom: 2px solid var(--accent-purple);
+    padding: var(--spacing-md) 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--box-shadow-sm);
+}
+
+.navbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+.navbar-logo {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    color: var(--text-light);
+    letter-spacing: 0.5px;
+}
+
+/* ============================================
+   CONTENEDOR PRINCIPAL
+   ============================================ */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-xl) var(--spacing-md);
+    width: 100%;
+}
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+
+.hero {
+    text-align: center;
+    margin-bottom: var(--spacing-2xl);
+    padding: var(--spacing-xl) var(--spacing-md);
+    background: linear-gradient(135deg, rgba(124, 91, 166, 0.1), rgba(26, 35, 50, 0.5));
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+}
+
+.hero h2 {
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--spacing-md);
+    color: var(--text-light);
+    font-weight: 700;
+}
+
+.hero p {
+    font-size: var(--font-size-lg);
+    color: var(--text-secondary);
+}
+
+/* ============================================
+   MOVIES SECTION
+   ============================================ */
+
+.movies-section h3 {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-lg);
+    color: var(--text-light);
+}
+
+.movies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+.movie-card {
+    background-color: var(--secondary-dark);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-lg);
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+}
+
+.movie-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--box-shadow);
+    border-color: var(--accent-purple);
+}
+
+.movie-card-header {
+    margin-bottom: var(--spacing-md);
+}
+
+.movie-card-title {
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    color: var(--text-light);
+    margin-bottom: var(--spacing-sm);
+}
+
+.movie-card-genre {
+    font-size: var(--font-size-sm);
+    color: var(--accent-purple);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.movie-card-description {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-md);
+    flex-grow: 1;
+    line-height: 1.5;
+}
+
+.movie-card-showtimes {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-md);
+}
+
+.btn-select-movie {
+    background-color: var(--accent-purple);
+    color: var(--text-light);
+    border: none;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    transition: var(--transition);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-select-movie:hover {
+    background-color: #9370b8;
+    transform: scale(1.02);
+}
+
+.btn-select-movie:active {
+    transform: scale(0.98);
+}
+
+/* ============================================
+   MOVIE DETAILS SECTION
+   ============================================ */
+
+.movie-details-section {
+    animation: slideIn 0.4s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.movie-details-container {
+    background-color: var(--secondary-dark);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-xl);
+    max-width: 600px;
+    margin: 0 auto var(--spacing-xl);
+}
+
+.selected-movie-info {
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-lg);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.selected-movie-info h3 {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-md);
+    color: var(--text-light);
+}
+
+.selected-movie-info p {
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+    line-height: 1.6;
+}
+
+/* ============================================
+   SHOWTIMES SECTION
+   ============================================ */
+
+.showtimes-section {
+    margin-bottom: var(--spacing-lg);
+}
+
+.showtimes-section label,
+.quantity-section label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: var(--spacing-md);
+    color: var(--text-light);
+    font-size: var(--font-size-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.showtimes-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.btn-showtime {
+    background-color: var(--border-color);
+    color: var(--text-light);
+    border: 2px solid var(--border-color);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    transition: var(--transition);
+    text-align: center;
+}
+
+.btn-showtime:hover {
+    border-color: var(--accent-purple);
+    background-color: rgba(124, 91, 166, 0.2);
+}
+
+.btn-showtime.active {
+    background-color: var(--accent-purple);
+    border-color: var(--accent-purple);
+    color: var(--text-light);
+}
+
+/* ============================================
+   QUANTITY SELECTOR
+   ============================================ */
+
+.quantity-section {
+    margin-bottom: var(--spacing-lg);
+}
+
+.quantity-selector {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.btn-quantity {
+    background-color: var(--accent-purple);
+    color: var(--text-light);
+    border: none;
+    width: 44px;
+    height: 44px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-quantity:hover {
+    background-color: #9370b8;
+}
+
+.btn-quantity:active {
+    transform: scale(0.95);
+}
+
+#quantityInput {
+    width: 80px;
+    padding: var(--spacing-sm);
+    background-color: var(--primary-dark);
+    color: var(--text-light);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    text-align: center;
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+}
+
+#quantityInput:focus {
+    outline: none;
+    border-color: var(--accent-purple);
+}
+
+/* ============================================
+   CONFIRM BUTTON
+   ============================================ */
+
+.btn-confirm {
+    background-color: var(--accent-purple);
+    color: var(--text-light);
+    border: none;
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: var(--font-size-base);
+    font-weight: 700;
+    transition: var(--transition);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    width: 100%;
+    margin-bottom: var(--spacing-md);
+}
+
+.btn-confirm:hover {
+    background-color: #9370b8;
+    box-shadow: var(--box-shadow);
+    transform: translateY(-2px);
+}
+
+.btn-confirm:active {
+    transform: translateY(0);
+}
+
+.btn-confirm:disabled {
+    background-color: var(--text-secondary);
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.btn-back {
+    background-color: transparent;
+    color: var(--accent-purple);
+    border: 1px solid var(--accent-purple);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    transition: var(--transition);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    width: 100%;
+}
+
+.btn-back:hover {
+    background-color: rgba(124, 91, 166, 0.2);
+}
+
+/* ============================================
+   CONFIRMATION SECTION
+   ============================================ */
+
+.confirmation-section {
+    animation: slideIn 0.4s ease;
+}
+
+.confirmation-container {
+    background: linear-gradient(135deg, rgba(124, 91, 166, 0.15), rgba(26, 35, 50, 0.5));
+    border: 2px solid var(--accent-purple);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-xl);
+    max-width: 600px;
+    margin: 0 auto var(--spacing-xl);
+    text-align: center;
+}
+
+.success-icon {
+    font-size: 48px;
+    color: var(--success-color);
+    margin-bottom: var(--spacing-md);
+    animation: scaleIn 0.5s ease;
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.confirmation-container h3 {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-lg);
+    color: var(--text-light);
+}
+
+.reservation-summary {
+    background-color: var(--secondary-dark);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+    text-align: left;
+}
+
+.reservation-summary p {
+    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-sm);
+    color: var(--text-light);
+}
+
+.reservation-summary p:last-child {
+    margin-bottom: 0;
+}
+
+.reservation-summary strong {
+    color: var(--accent-purple);
+}
+
+.confirmation-message {
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-lg);
+    font-size: var(--font-size-base);
+}
+
+.btn-new-reservation {
+    background-color: var(--success-color);
+    color: var(--text-light);
+    border: none;
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: var(--font-size-base);
+    font-weight: 700;
+    transition: var(--transition);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-new-reservation:hover {
+    background-color: #7eb899;
+    transform: translateY(-2px);
+    box-shadow: var(--box-shadow);
+}
+
+.btn-new-reservation:active {
+    transform: translateY(0);
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+.footer {
+    background-color: var(--secondary-dark);
+    border-top: 1px solid var(--border-color);
+    padding: var(--spacing-lg) var(--spacing-md);
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+    margin-top: auto;
+}
+
+/* ============================================
+   RESPONSIVE - TABLET
+   ============================================ */
+
+@media (max-width: 768px) {
+    .container {
+        padding: var(--spacing-lg) var(--spacing-md);
+    }
+
+    .hero h2 {
+        font-size: var(--font-size-xl);
+    }
+
+    .hero p {
+        font-size: var(--font-size-base);
+    }
+
+    .movies-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: var(--spacing-md);
+    }
+
+    .movie-details-container {
+        padding: var(--spacing-lg);
+    }
+
+    .showtimes-container {
+        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+        gap: var(--spacing-sm);
+    }
+}
+
+/* ============================================
+   RESPONSIVE - MOBILE
+   ============================================ */
+
+@media (max-width: 480px) {
+    :root {
+        --font-size-base: 14px;
+        --font-size-lg: 16px;
+        --font-size-xl: 20px;
+        --spacing-lg: 16px;
+        --spacing-xl: 20px;
+    }
+
+    .navbar-logo {
+        font-size: var(--font-size-lg);
+    }
+
+    .hero {
+        padding: var(--spacing-lg) var(--spacing-md);
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .hero h2 {
+        font-size: var(--font-size-lg);
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .hero p {
+        font-size: var(--font-size-base);
+    }
+
+    .movies-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    .movie-card {
+        padding: var(--spacing-md);
+    }
+
+    .movie-details-container {
+        padding: var(--spacing-lg);
+        max-width: 100%;
+    }
+
+    .showtimes-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-sm);
+    }
+
+    .btn-showtime {
+        padding: var(--spacing-sm);
+        font-size: var(--font-size-sm);
+    }
+
+    .quantity-selector {
+        gap: var(--spacing-sm);
+    }
+
+    .btn-quantity {
+        width: 40px;
+        height: 40px;
+        font-size: var(--font-size-base);
+    }
+
+    #quantityInput {
+        width: 60px;
+        padding: var(--spacing-xs);
+        font-size: var(--font-size-base);
+    }
+
+    .confirmation-container {
+        padding: var(--spacing-lg);
+    }
+
+    .success-icon {
+        font-size: 36px;
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .confirmation-container h3 {
+        font-size: var(--font-size-lg);
+        margin-bottom: var(--spacing-md);
+    }
+
+    .reservation-summary {
+        padding: var(--spacing-md);
+        margin-bottom: var(--spacing-md);
+    }
+
+    .reservation-summary p {
+        margin-bottom: var(--spacing-sm);
+        font-size: var(--font-size-sm);
+    }
+}
