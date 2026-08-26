@@ -8,6 +8,7 @@ const movies = [
         id: 1,
         title: "Fantastic Mr. Fox",
         genre: "Comedia, Animación",
+        rating: 4.8,
         description: "Tres malvados granjeros le declaran la guerra a un zorro y este anima a sus vecinos animales a defenderse.",
         showtimes: ["14:30", "17:00", "19:30", "22:00"],
         image: "images/mrfox.jpeg"
@@ -16,6 +17,7 @@ const movies = [
         id: 2,
         title: "Un monstruo en Paris",
         genre: "Musical, Animación",
+        rating: 4.6,
         description: "Raoul y Emile accidentalmente liberan a un monstruo del excéntrico invernadero de un científico e intentan atraparlo.",
         showtimes: ["15:00", "18:00", "20:30"],
         image: "images/paris.jpeg"
@@ -24,7 +26,8 @@ const movies = [
         id: 3,
         title: "Mi vecino Totoro",
         genre: "Fantasia, Aventura",
-        description: "Satsuki y Mei se mudan al campo con su padre mientras su madre se recupera en un hospital cercano. Explorando su nuevo hogar, descubren un mundo invisible para los adultos, habitado por espíritus del bosque.",
+        rating: 4.9,
+        description: "Satsuki y Mei se mudan al campo con su padre mientras su madre se recupera en un hospital cercano. Explorando su nuevo hogar, descubren un mundo invisible para los adultos, h[...]",
         showtimes: ["16:00", "18:30", "21:00", "23:30"],
         image: "images/tororo.jpeg"
     },
@@ -32,6 +35,7 @@ const movies = [
         id: 4,
         title: "La sociedad de los poetas muertos",
         genre: "Comedia, Drama",
+        rating: 4.7,
         description: "Un maestro en un colegio privado emplea métodos poco convencionales para inspirar las vidas de sus estudiantes.",
         showtimes: ["13:30", "15:30", "17:30", "20:00"],
         image: "images/sociedadpoetas.jpeg"
@@ -40,6 +44,7 @@ const movies = [
         id: 5,
         title: "Orgullo y Prejuicio",
         genre: "Romance, Comedia",
+        rating: 4.5,
         description: "Elizabeth Bennet conoce al apuesto y adinerado Sr. Darcy, con quien, rápidamente, inicia una intensa y compleja dinámica.",
         showtimes: ["15:45", "18:15", "20:45", "23:00"],
         image: "images/prejuicio.jpeg"
@@ -48,7 +53,8 @@ const movies = [
         id: 6,
         title: "Interestelar",
         genre: "Ciencia Ficción, Aventura",
-        description: "Gracias a un descubrimiento, un grupo de científicos y exploradores se embarcan en un viaje espacial para encontrar un lugar con las condiciones necesarias para reemplazar a la Tierra y comenzar una nueva vida allí.",
+        rating: 4.9,
+        description: "Gracias a un descubrimiento, un grupo de científicos y exploradores se embarcan en un viaje espacial para encontrar un lugar con las condiciones necesarias para reemplazar a[...]",
         showtimes: ["14:00", "16:30", "19:00", "21:30"],
         image: "images/interestelar.jpeg"
     }
@@ -96,6 +102,10 @@ function createMovieCard(movie) {
 
     const showtimesCount = movie.showtimes.length;
     const showtimesText = showtimesCount === 1 ? 'horario' : 'horarios';
+    
+    // Crear las estrellas basadas en el rating
+    const stars = '★'.repeat(5);
+    const ratingDisplay = `<span class="movie-card-rating">${stars} ${movie.rating}</span>`;
 
     card.innerHTML = `
         <img 
@@ -108,6 +118,7 @@ function createMovieCard(movie) {
             <div class="movie-card-header">
                 <h3 class="movie-card-title">${movie.title}</h3>
                 <span class="movie-card-genre">${movie.genre}</span>
+                ${ratingDisplay}
             </div>
 
             <p class="movie-card-description">
