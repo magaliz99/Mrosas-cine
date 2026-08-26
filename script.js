@@ -27,7 +27,7 @@ const movies = [
         title: "Mi vecino Totoro",
         genre: "Fantasia, Aventura",
         rating: 4.9,
-        description: "Satsuki y Mei se mudan al campo con su padre mientras su madre se recupera en un hospital cercano. Explorando su nuevo hogar, descubren un mundo invisible para los adultos, h[...]",
+        description: "Satsuki y Mei se mudan al campo con su padre mientras su madre se recupera en un hospital cercano. Explorando su nuevo hogar, descubren un mundo invisible para los adultos, habitado por espíritus del bosque.",
         showtimes: ["16:00", "18:30", "21:00", "23:30"],
         image: "images/tororo.jpeg"
     },
@@ -54,7 +54,7 @@ const movies = [
         title: "Interestelar",
         genre: "Ciencia Ficción, Aventura",
         rating: 4.9,
-        description: "Gracias a un descubrimiento, un grupo de científicos y exploradores se embarcan en un viaje espacial para encontrar un lugar con las condiciones necesarias para reemplazar a[...]",
+        description: "Gracias a un descubrimiento, un grupo de científicos y exploradores se embarcan en un viaje espacial para encontrar un lugar con las condiciones necesarias para reemplazar a la Tierra y comenzar una nueva vida allí.",
         showtimes: ["14:00", "16:30", "19:00", "21:30"],
         image: "images/interestelar.jpeg"
     }
