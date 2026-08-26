@@ -26,7 +26,7 @@ const movies = [
         genre: "Fantasia, Aventura",
         description: "Satsuki y Mei se mudan al campo con su padre mientras su madre se recupera en un hospital cercano. Explorando su nuevo hogar, descubren un mundo invisible para los adultos, habitado por espíritus del bosque.",
         showtimes: ["16:00", "18:30", "21:00", "23:30"],
-        image: "images/totoro.jpeg"
+        image: "images/tororo.jpeg"
     },
     {
         id: 4,
