@@ -1,3 +1,4 @@
+
 // ============================================
 // DATOS ESTÁTICOS - PELÍCULAS Y HORARIOS
 // ============================================
@@ -5,10 +6,10 @@
 const movies = [
     {
         id: 1,
-        title: "Fantantic Mr. Fox",
+        title: "Fantastic Mr. Fox",
         genre: "Comedia, Animación",
         description: "Tres malvados granjeros le declaran la guerra a un zorro y este anima a sus vecinos animales a defenderse.",
-        showtimes: ["14:30", "17:00", "19:30", "22:00"]
+        showtimes: ["14:30", "17:00", "19:30", "22:00"],
         image: "images/mrfox.jpeg"
     },
     {
@@ -16,23 +17,23 @@ const movies = [
         title: "Un monstruo en Paris",
         genre: "Musical, Animación",
         description: "Raoul y Emile accidentalmente liberan a un monstruo del excéntrico invernadero de un científico e intentan atraparlo.",
-        showtimes: ["15:00", "18:00", "20:30"]
-        image: "paris.jpeg"
+        showtimes: ["15:00", "18:00", "20:30"],
+        image: "images/paris.jpeg"
     },
     {
         id: 3,
         title: "Mi vecino Totoro",
         genre: "Fantasia, Aventura",
-        description: "Satsuki y Mei se mudan al campo con su padre mientras su madre se recupera en un hospital cercano. Explorando su nuevo hogar,descubren un mundo invisible para los adultos,habitado por espíritus del bosque",
-        showtimes: ["16:00", "18:30", "21:00", "23:30"]
-        image: "images/paris.jpeg"
+        description: "Satsuki y Mei se mudan al campo con su padre mientras su madre se recupera en un hospital cercano. Explorando su nuevo hogar, descubren un mundo invisible para los adultos, habitado por espíritus del bosque.",
+        showtimes: ["16:00", "18:30", "21:00", "23:30"],
+        image: "images/totoro.jpeg"
     },
     {
         id: 4,
         title: "La sociedad de los poetas muertos",
         genre: "Comedia, Drama",
         description: "Un maestro en un colegio privado emplea métodos poco convencionales para inspirar las vidas de sus estudiantes.",
-        showtimes: ["13:30", "15:30", "17:30", "20:00"]
+        showtimes: ["13:30", "15:30", "17:30", "20:00"],
         image: "images/sociedadpoetas.jpeg"
     },
     {
@@ -40,15 +41,15 @@ const movies = [
         title: "Orgullo y Prejuicio",
         genre: "Romance, Comedia",
         description: "Elizabeth Bennet conoce al apuesto y adinerado Sr. Darcy, con quien, rápidamente, inicia una intensa y compleja dinámica.",
-        showtimes: ["15:45", "18:15", "20:45", "23:00"]
+        showtimes: ["15:45", "18:15", "20:45", "23:00"],
         image: "images/prejuicio.jpeg"
     },
     {
         id: 6,
         title: "Interestelar",
         genre: "Ciencia Ficción, Aventura",
-        description: "Gracias a un descubrimiento, un grupo de científicos y exploradores, se embarcan en un viaje espacial para encontrar un lugar con las condiciones necesarias para reemplazar a la Tierra y comenzar una nueva vida allí.",
-        showtimes: ["14:00", "16:30", "19:00", "21:30"]
+        description: "Gracias a un descubrimiento, un grupo de científicos y exploradores se embarcan en un viaje espacial para encontrar un lugar con las condiciones necesarias para reemplazar a la Tierra y comenzar una nueva vida allí.",
+        showtimes: ["14:00", "16:30", "19:00", "21:30"],
         image: "images/interestelar.jpeg"
     }
 ];
@@ -97,23 +98,37 @@ function createMovieCard(movie) {
     const showtimesText = showtimesCount === 1 ? 'horario' : 'horarios';
 
     card.innerHTML = `
-    <img class="movie-card-image" src="${movie.image}" alt="Póster de ${movie.title}">
-    
-    <div class="movie-card-content">
-        <div class="movie-card-header">
-            <h3 class="movie-card-title">${movie.title}</h3>
-            <span class="movie-card-genre">${movie.genre}</span>
+        <img 
+            class="movie-card-image" 
+            src="${movie.image}" 
+            alt="Póster de ${movie.title}"
+        >
+
+        <div class="movie-card-content">
+            <div class="movie-card-header">
+                <h3 class="movie-card-title">${movie.title}</h3>
+                <span class="movie-card-genre">${movie.genre}</span>
+            </div>
+
+            <p class="movie-card-description">
+                ${movie.description}
+            </p>
+
+            <p class="movie-card-showtimes">
+                ${showtimesCount} ${showtimesText} disponibles
+            </p>
+
+            <button class="btn-select-movie" data-movie-id="${movie.id}">
+                Seleccionar
+            </button>
         </div>
+    `;
 
-        <p class="movie-card-description">${movie.description}</p>
+    card.querySelector('.btn-select-movie').addEventListener('click', () => {
+        selectMovie(movie);
+    });
 
-        <p class="movie-card-showtimes">${showtimesCount} ${showtimesText} disponibles</p>
-
-        <button class="btn-select-movie" data-movie-id="${movie.id}">
-            Seleccionar
-        </button>
-    </div>
-`;
+    return card;
 }
 
 // ============================================
@@ -125,22 +140,17 @@ function selectMovie(movie) {
     selectedShowtime = null;
     ticketQuantity = 1;
 
-    // Actualizar información de película seleccionada
     document.getElementById('selectedMovieTitle').textContent = movie.title;
     document.getElementById('selectedMovieDescription').textContent = movie.description;
 
-    // Renderizar horarios
     renderShowtimes(movie.showtimes);
 
-    // Actualizar cantidad de entradas
     document.getElementById('quantityInput').value = ticketQuantity;
 
-    // Mostrar sección de detalles, ocultar películas y confirmación
     document.getElementById('moviesGrid').parentElement.style.display = 'none';
     document.getElementById('movieDetailsSection').style.display = 'block';
     document.getElementById('confirmationSection').style.display = 'none';
 
-    // Desactivar botón confirmar hasta seleccionar horario
     updateConfirmButton();
 }
 
@@ -154,21 +164,20 @@ function renderShowtimes(showtimes) {
 
     showtimes.forEach(showtime => {
         const button = document.createElement('button');
+
         button.className = 'btn-showtime';
         button.textContent = showtime;
         button.setAttribute('aria-label', `Horario ${showtime}`);
 
         button.addEventListener('click', () => {
-            // Remover clase active de todos los botones
+
             document.querySelectorAll('.btn-showtime').forEach(btn => {
                 btn.classList.remove('active');
             });
 
-            // Agregar clase active al botón seleccionado
             button.classList.add('active');
             selectedShowtime = showtime;
 
-            // Actualizar estado del botón confirmar
             updateConfirmButton();
         });
 
@@ -216,7 +225,7 @@ function increaseTickets() {
 
 function updateConfirmButton() {
     const confirmBtn = document.getElementById('confirmBtn');
-    
+
     if (selectedShowtime) {
         confirmBtn.disabled = false;
     } else {
@@ -229,12 +238,10 @@ function updateConfirmButton() {
 // ============================================
 
 function confirmReservation() {
-    // Mostrar resumen
     document.getElementById('summaryMovie').textContent = selectedMovie.title;
     document.getElementById('summaryShowtime').textContent = selectedShowtime;
     document.getElementById('summaryQuantity').textContent = ticketQuantity;
 
-    // Cambiar vistas
     document.getElementById('movieDetailsSection').style.display = 'none';
     document.getElementById('confirmationSection').style.display = 'block';
 }
@@ -252,8 +259,10 @@ function backToMovies() {
     document.getElementById('confirmationSection').style.display = 'none';
     document.getElementById('moviesGrid').parentElement.style.display = 'block';
 
-    // Scroll hacia arriba
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
 }
 
 // ============================================
@@ -268,6 +277,8 @@ function newReservation() {
     document.getElementById('confirmationSection').style.display = 'none';
     document.getElementById('moviesGrid').parentElement.style.display = 'block';
 
-    // Scroll hacia arriba
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
 }
